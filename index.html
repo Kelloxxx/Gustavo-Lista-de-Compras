@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+
+<head>
+    <title>Lista de compras</title>
+    <link rel="stylesheet" href="styled.css">
+</head>
+
+
+<body onload="atualizar()">
+    <div class="container">
+        <label for="item">Lista de compras</label>
+        <div>
+        <input id="item">
+        <button class="botao" onclick="salvar()">submit</button>
+        </div>
+        <button class="botao2" onclick="apagar()">clear</button>
+    </div>
+
+    <div class="lista">
+
+        <div id="lista">
+
+        </div>
+
+    </div>
+
+
+
+<script>
+
+    var dados = []
+
+    async function atualizar() {
+        const response = await fetch('produtos')
+        dados = await response.json();
+        criarTabela(dados)
+    }
+
+
+    function criarTabela(produtos) {
+            document.getElementById("lista").innerHTML = "";
+            const table = document.createElement("table");
+            table.setAttribute("border", "1");
+
+            const row = document.createElement("tr");
+            const td1 = document.createElement("th");
+            td1.textContent = 'item';
+            row.appendChild(td1);
+            table.appendChild(row);
+    
+            for (const produto of produtos) {
+                const rowDados = document.createElement("tr");
+                const tdItem = document.createElement("td");
+                tdItem.textContent = produto.item;
+
+                rowDados.appendChild(tdItem);
+                table.appendChild(rowDados)
+            }
+            const container = document.getElementById('lista');
+            container.appendChild(table);
+        }
+
+            async function salvar(){
+
+            if (document.getElementById('item').value == '') {
+                alert('Item inválido');
+                return
+            }
+
+            for (const produto of dados) {
+                if (document.getElementById('item').value == produto.item) {
+                    console.log(document.getElementById('item').value, produto.item)
+                    alert('Esse item ja está na lista')
+                    return
+                }
+            }
+
+            const dadosInsert = {
+                item: document.getElementById('item').value
+            }
+
+            
+            await fetch('produtos', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(dadosInsert)
+            })
+            
+
+            atualizar()
+
+            alert('Item salvo =D')
+        }
+        
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: rgb(223, 231, 231);
+    justify-content: center;
+    margin: 40px;
+    padding:40px;
+}
+
+.container{
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
+    font-size: 2.9em;
+}
+
+
+.botao{
+
+    background-color: rgb(29, 139, 202);
+    border: 10px solid;
+    border-color: rgb(29, 139, 202);
+    border-radius: 7px;
+    color: white;
+    cursor: grab;
+}
+
+
+.lista {
+    padding: 3%;
+}
+table {
+    border: 1px
+}
+
+
+.botao2{
+
+    background-color: rgb(202, 29, 29);
+    border: 10px solid;
+    border-color: rgb(202, 29, 29);
+    border-radius: 7px;
+    color: rgb(255, 255, 255);
+    cursor: grab;
+
+}
