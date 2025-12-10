@@ -7,6 +7,7 @@ body{
 }
 
 .container{
+    width: 50%;
     margin: auto;
     padding: 20px;
     background-color: white;
@@ -30,6 +31,10 @@ body{
     cursor: grab;
 }
 
+input{
+    border-radius: 3px;
+    border: 3.7px solid rgb(29, 139, 202);
+}
 
 .lista {
     padding: 3%;
